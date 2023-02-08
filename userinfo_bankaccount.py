@@ -1,3 +1,4 @@
+##RESUBMIT##
 ##From previous assignment
 class BankAccount:
     def __init__(self, initial_balance=0, interest_rate=0):
@@ -8,7 +9,11 @@ class BankAccount:
         self.balance += amount
 
     def withdraw(self, amount):
-        self.balance -= amount
+        if amount <= self.balance:
+            self.balance -= amount
+        else:
+            print("Insufficient funds: Charging a $5 fee")
+            self.balance -= 5 
     
     def display_account_info(self):
         print(f"Balance: ${self.balance: f}")
@@ -35,5 +40,12 @@ class User:
 
     def display_user_info(self):
         print(f"Name: {self.name}")
-        for account_name, account in self.accounts.items():
-            print(f"Account: {account_name}") account.display_account_info()
+        self.account.display_account_info()
+
+
+Nenye = User("Nenye")
+Nenye.display_user_info()
+Nenye.make_deposit(100)
+Nenye.display_user_info()
+Nenye.make_withdrawal(50)
+Nenye.display_user_info()
